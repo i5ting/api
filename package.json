@@ -1,0 +1,28 @@
+{
+  "name": "QbaseApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/supervisor ./index.js",
+    "test": "./node_modules/.bin/mocha -u tdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i5ting/api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i5ting/api/issues"
+  },
+  "homepage": "https://github.com/i5ting/api",
+  "dependencies": {
+    "body-parser": "^1.9.0",
+    "debug": "^2.1.0",
+    "express": "^4.9.8"
+  },
+  "devDependencies": {
+    "supervisor": "^0.6.0"
+  }
+}
