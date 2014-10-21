@@ -10,11 +10,12 @@
 
 
 
-## Desc
+## Request
 
 ### common
 
 - url
+- http verb
 - url params
 - headers
 
@@ -26,6 +27,10 @@
 - OPTIONS
 - PURGE
 
+url params details
+
+- key
+- value
 
 ### Type 2
 
@@ -50,3 +55,17 @@ url params details
 	- type {text|json|xml|html}
 	- content
 	
+	
+## Response
+
+- status
+- time
+- headers
+- cookies
+- body(view moded : {pretty | raw | preview})
+	- text
+	- json
+	- xml
+	- html
+
+
