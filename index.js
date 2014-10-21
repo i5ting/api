@@ -1,11 +1,12 @@
 var express = require('express');
 var app = express();
+var config = require('./config');
 
 app.get('/',function(req,res){
     res.send('hello,world');
 });
 
-app.listen(5000);
 
+app.listen(config.server.port);
 
 module.exports = app;
