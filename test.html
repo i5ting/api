@@ -1,0 +1,44 @@
+<script>
+
+	var sql_create_qbase_request = ""
+	+"CREATE TABLE IF NOT EXISTS qbase_request ("
+	+"	id INTEGER PRIMARY KEY AUTOINCREMENT, "
+	+"	label string,"
+	+"	desc Text,"
+	+"	url string,"
+	+"	verb string,"
+	+"	url_params_type string"
+	+")";
+ 
+ var sql_create_qbase_request_params = ""
+	+"CREATE TABLE IF NOT EXISTS qbase_request_params("
+	+"	id INTEGER PRIMARY KEY AUTOINCREMENT, "
+	+"	f1 string,"
+	+"	f2 Text,"
+	+"	f3 string,"
+	+ " request_id INTEGER"
+	+")";
+ 
+	var sql_create_qbase_request_headers = ""
+	+"CREATE TABLE IF NOT EXISTS qbase_request_headers("
+	+"	id INTEGER PRIMARY KEY AUTOINCREMENT, "
+	+"	key string,"
+	+"	value string,"
+	+ "request_id INTEGER"
+	+")";
+
+
+
+	//open database
+	var db = openDatabase('qbase_api_db', '1.0', 'Test DB', 2 * 1024 * 1024); 
+
+	db.transaction(function (tx) {            
+		tx.executeSql('drop table qbase_request;');
+		tx.executeSql('drop table qbase_request_params;');
+		tx.executeSql('drop table qbase_request_headers;');
+		
+		tx.executeSql(sql_create_qbase_request);
+		tx.executeSql(sql_create_qbase_request_params);
+		tx.executeSql(sql_create_qbase_request_headers);
+	});
+</script>
