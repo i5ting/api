@@ -157,5 +157,19 @@ insert into qbase_request('label','host','verb','detail') values('get tokens lis
 - app.js
 - middleware.js
 - request cache for mockup
-- request  for impl
+- request for impl
+
+if api implement is marked, add it to nginx.conf,then reload nginx
+
+
+
+
+
+
+
+
+
+
+
+
 
