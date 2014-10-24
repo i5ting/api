@@ -1,4 +1,4 @@
 #! /bin/bash
 # ./stopnginx.sh
 
-nginx -p .  -c conf/nginx.conf 
+nginx -p nginx  -c nginx/conf/nginx.conf 
