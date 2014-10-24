@@ -149,3 +149,13 @@ var o = {
 }
 
 insert into qbase_request('label','host','verb','detail') values('get tokens list','127.0.0.1','GET','common');
+
+
+## 层次
+
+- nginx
+- app.js
+- middleware.js
+- request cache for mockup
+- request  for impl
+
