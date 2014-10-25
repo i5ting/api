@@ -3,6 +3,6 @@
 
 mkdir -p nginx/logs
 
-nginx -p nginx  -c conf/nginx.conf 
+nginx -p nginx  -c conf/nginx.conf
 
 ps -ef|grep nginx 
