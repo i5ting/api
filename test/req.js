@@ -19,10 +19,15 @@ var options = {
 describe('dump req obj', function(){
   it('respond with json', function(done){
 		
-  	 var data = req('/token','GET',req.UPT_1);
-		 
-		 should.exist(data);
-		 console.log(prettyjson.render(data, options));
+		request(app)
+		  .get('/token')
+		  .expect('Content-Type', /json/)
+		  .expect('Content-Length', '20')
+		  .expect(200)
+		  .end(function(err, res){
+		    if (err) throw err;
+		  });
+			
 		 
 		 done();
   })
