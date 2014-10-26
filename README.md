@@ -1,21 +1,21 @@
 # api mocker
 
-## todo
+## TODO
 
 - v0.1
-	GET和POST基本结构测试，定型
+		GET和POST基本结构测试，定型
 - v0.2
-	可视化请求创建界面
+		可视化请求创建界面
 - v0.3
-	请求cache持久化到mongodb
+		请求cache持久化到mongodb
 - v0.4
-	支持项目、版本、分类、tag
+		支持项目、版本、分类、tag
 - v0.5
-	已完成接口替换和nginx负载
+		已完成接口替换和nginx负载
 - v0.6
-	自动测试
+		自动测试
 - v0.7
-	生成其他语言的http请求代码
+		生成其他语言的http请求代码
 
 ## DEBUG
 
