@@ -17,7 +17,7 @@ var options = {
 
 
 describe('dump req obj', function(){
-  it('respond with json', function(done){
+  it('get respond with json', function(done){
 		
 		request(app)
 		  .get('/token?user_name=shilong&user_password=00000')
@@ -26,14 +26,11 @@ describe('dump req obj', function(){
 		  .end(function(err, res){
 		    if (err) throw err;
 		  });
-			
 		 
 		 done();
   })
 	
-	
-  it('respond with json', function(done){
-
+  it('post respond with json', function(done){
 		request(app)
 		  .post('/token')
 			.send({ user_name: 'shilong', user_password: '00000' })
@@ -43,7 +40,9 @@ describe('dump req obj', function(){
 		    if (err) throw err;
 		  });
 			
-		 
 		 done();
   })
+	
+ 
+	//end
 })
