@@ -1,7 +1,23 @@
 var config = require('./config');
 var data = require('./data');
 
-module.exports = function() {
+// module.exports = function() {
+//
+// 	return function(req, res, next) {
+//
+//
+// 		var token_request = data.token_get_request
+// 		var token_post_request = data.token_post_request
+//
+//
+// 		mount_a_req(req, res, next);
+// 		// call the next middleware
+// 	  next();
+// 	}
+// };
+
+
+function mount_a_req_with_type1(obj, req, res, next){
 
 	var token_request = data.token_get_request
 	var token_post_request = data.token_post_request
@@ -74,10 +90,24 @@ module.exports = function() {
 			}
 		 
 		}
-	}
-	 
+	} 
+	
+	return parse_with(req,res,next);
+}
+
+
+function mount_a_req_with_type2(obj, req, res, next){
+	
+}
+
+
+function mount_a_req(obj, req, res, next){
+	
+}
+ 
+module.exports = function(obj) {
 	return function(req, res, next) {
-		parse_with(req,res)
+		mount_a_req(obj, req, res, next);
 		// call the next middleware
 	  next(); 
 	} 
