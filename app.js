@@ -77,7 +77,7 @@ function parse_with(req,res){
 		_request_url = req.url.split('?')[0]
 	}
 	
-	if(token_request.verb === req.method && token_request.url === _request_url){
+	if(token_request.verb === req.method && (config.url_prefix + token_request.url) === _request_url){
 		console.log('this is a token_request');
 		
 		if(_query_keys === req_query_keys){
