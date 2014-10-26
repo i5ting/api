@@ -20,10 +20,25 @@ describe('dump req obj', function(){
   it('respond with json', function(done){
 		
 		request(app)
-		  .get('/token')
+		  .get('/token?user_name=shilong&user_password=00000')
 		  .expect('Content-Type', /json/)
-		  .expect('Content-Length', '20')
 		  .expect(200)
+		  .end(function(err, res){
+		    if (err) throw err;
+		  });
+			
+		 
+		 done();
+  })
+	
+	
+  it('respond with json', function(done){
+
+		request(app)
+		  .post('/token')
+			.send({ user_name: 'shilong', user_password: '00000' })
+		  .expect(200)
+			.expect('Content-Type', /json/)
 		  .end(function(err, res){
 		    if (err) throw err;
 		  });
