@@ -19,8 +19,7 @@ var data = require('./data');
 
 function mount_a_req_with_type1(obj, req, res, next){
 
-	var token_request = data.token_get_request
-	var token_post_request = data.token_post_request
+	var token_request = obj;
 	
 	function keys(object) {
 	  var keys = [];
@@ -100,8 +99,39 @@ function mount_a_req_with_type2(obj, req, res, next){
 	
 }
 
+function is_contain_in_array(arr, str){
+	for(var i in arr){
+		var o = arr[i];
+		if(o === str){
+			console.log(str);
+			return true;
+		}
+	}
+	
+	return false;
+}
 
 function mount_a_req(obj, req, res, next){
+	var r1 = ['GET','COPY','HEAD','OPTIONS','PURGE']
+	var r2 = ['POST','PUT','PATCH','DELETE','UNLINK','LINK']
+	
+	var verb = obj.verb.toUpperCase();
+
+	
+	var util = require('util');
+
+
+	
+	
+	
+	console.log(is_contain_in_array(r1, verb) == true);
+	// if(r1.contains(verb) == true){
+	// 	return  mount_a_req_with_type1(obj, req, res, next);
+	// }else if(r2.contains(verb) == true){
+	// 	return  mount_a_req_with_type2(obj, req, res, next);
+	// }else{
+	// 	console.log('in middleware.js,the http verb is not correct'+ verb);
+	// }
 	
 }
  
