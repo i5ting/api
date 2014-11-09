@@ -16,7 +16,7 @@ var options = {
 };
 
 
-describe('dump req obj', function(){
+describe('req obj', function(){
   it('get respond with json', function(done){
 		
 		request(app)
