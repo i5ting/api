@@ -11,8 +11,8 @@
     "type": "git",
     "url": "https://github.com/i5ting/api.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "i5ting",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/i5ting/api/issues"
   },
