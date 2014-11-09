@@ -69,7 +69,8 @@ url params details
 
 一个请求一个对象，存
 
-**
+### get类的为type1型
+
 ```
 url:                /token
 verb:               GET
@@ -89,6 +90,7 @@ params:
 	]
 ```
 
+### post类的为type2型
 
 ```
 url:                /token
@@ -115,15 +117,34 @@ params:
 
 ## table
 
+### 表结构定义
+
 	CREATE TABLE IF NOT EXISTS qbase_request (
 		id INTEGER PRIMARY KEY AUTOINCREMENT, 
-		label string,
+		name string,
+		url string,
 		desc Text,
 		host string,
 		verb string,
 		detail Text
 	)
 
+
+### 说明
+
+| 可选项 | 参数用途    | 参数例子  | 说明                |  
+|-------|------------|---------|------------------------|
+| id    | 自增唯一    | 无需参数  | 无输出                  |
+| name    | 请求名称 | token请求   | |
+| url    | url | url   | http://127.0.0.1:5000/token |
+| desc    | 描述 | 这个请求是干什么的，以及注意事项等   | |
+| host    | 请求ip地址 | 127.0.0.1   | 可变 |
+| verb    | 请求verb | 如get/post |非常多|
+| detail    | 详情 | 比如请求参数，header等 |序列化成string存储|
+
+
+### 例子
+```
 var o = {
 	url:'/token',
 	verb:'GET'
@@ -143,6 +164,7 @@ var o = {
 		]
 	}
 }
+```
 
 insert into qbase_request('label','host','verb','detail') values('get tokens list','127.0.0.1','GET','common');
 
