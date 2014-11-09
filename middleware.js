@@ -41,8 +41,6 @@ function get_req_query_keys(req){
 	return obj.join('&');
 }
 
-
-// 
 function get_body_keys(token_request){
 	var obj = keys();
 
@@ -69,16 +67,29 @@ function get_req_body_keys(req){
 	return obj.join('&');
 }
 
-
+/**
+ * Initialize a new `TestAgent`.
+ *
+ * @param {Array} arr
+ * @param {string} str
+ */
+function _is_contain_in_array(arr, str){
+	return arr.indexOf(str) !== -1;
+}
+ 
+/**
+ * 处理http verb为type1的请求
+ *
+ * var r1 = ['GET','COPY','HEAD','OPTIONS','PURGE']
+ */ 
 function mount_a_req_with_type1(obj, req, res, next){
 	var token_request = obj;
 
 	function parse_with(req,res,next){
-	
 		var _query_keys = get_query_keys(token_request);
 		var req_query_keys = get_req_query_keys(req);
-	
 		var _request_url = ''
+		
 		if(token_request.verb  == 'GET'){
 			_request_url = req.url.split('?')[0]
 		}
@@ -96,7 +107,6 @@ function mount_a_req_with_type1(obj, req, res, next){
 					}
 				});
 			}
-		 
 		}
 		
 		next();
@@ -105,26 +115,27 @@ function mount_a_req_with_type1(obj, req, res, next){
 	return parse_with(req,res,next);
 }
 
-
+/**
+ * 处理http verb为type2的请求
+ *
+ * var r2 = ['POST','PUT','PATCH','DELETE','UNLINK','LINK']
+ */ 
 function mount_a_req_with_type2(obj, req, res, next){
 	console.log('a post request');
 	var token_request = obj;
 
 	function parse_with(req,res,next){
-	
 		var _query_keys = get_body_keys(token_request);//user_name&user_password
-
 		var req_query_keys = get_req_body_keys(req);
-	
 		var _request_url = ''
+		
 		if(token_request.verb  == 'POST'){
 			_request_url = req.url.split('?')[0]
 		}
 	
 		if(token_request.verb === req.method && (config.url_prefix + token_request.url) === _request_url){
 			console.log('this is a post token_request\n' + req_query_keys);
-		
-		
+
 			if(_query_keys === req_query_keys){
 				console.log('req.query完全一样');
 				res.json({
@@ -135,7 +146,6 @@ function mount_a_req_with_type2(obj, req, res, next){
 					}
 				});
 			}
-		 
 		}
 		
 		next();
@@ -144,30 +154,12 @@ function mount_a_req_with_type2(obj, req, res, next){
 	return parse_with(req,res,next);
 }
 
-
 /**
- * Initialize a new `TestAgent`.
- *
- * @param {Array} arr
- * @param {string} str
- */
-
-function _is_contain_in_array(arr, str){
-	for(var i in arr){
-		var o = arr[i];
-		if(o === str){
-			console.log(str);
-			return true;
-		}
-	}
-	
-	return false;
-}
-
+ * 处理请求入口函数
+ */ 
 function mount_a_req(obj, req, res, next){
 	var r1 = ['GET','COPY','HEAD','OPTIONS','PURGE']
 	var r2 = ['POST','PUT','PATCH','DELETE','UNLINK','LINK']
-	
 	var verb = obj.verb.toUpperCase();
  
 	if(_is_contain_in_array(r1, verb) == true){
@@ -177,9 +169,8 @@ function mount_a_req(obj, req, res, next){
 	}else{
 		console.log('in middleware.js,the http verb is not correct'+ verb);
 	}
-	
 }
- 
+
 module.exports = function(obj) {
 	return function(req, res, next) {
 		mount_a_req(obj, req, res, next);
