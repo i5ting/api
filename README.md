@@ -1,6 +1,6 @@
 # api mocker
 
-
+demo play
 
 ## DEBUG
 
@@ -134,7 +134,7 @@ params:
 
 | 可选项 | 参数用途    | 参数例子  | 说明                |  
 |-------|------------|---------|------------------------|
-| id    | 自增唯一    | 无需参数  | 无输出                  |
+| id    | 对象标识    | 自增唯一  | 无输出                  |
 | name    | 请求名称 | token请求   | |
 | url    | url | url   | http://127.0.0.1:5000/token |
 | desc    | 描述 | 这个请求是干什么的，以及注意事项等   | |
@@ -178,16 +178,4 @@ insert into qbase_request('label','host','verb','detail') values('get tokens lis
 - request for impl
 
 if api implement is marked, add it to nginx.conf,then reload nginx
-
-
-
-
-
-
-
-
-
-
-
-
 
