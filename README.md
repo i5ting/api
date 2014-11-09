@@ -179,3 +179,12 @@ insert into qbase_request('label','host','verb','detail') values('get tokens lis
 
 if api implement is marked, add it to nginx.conf,then reload nginx
 
+
+## git usage
+
+git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。
+
+```
+git tag v0.1.0-light
+git push origin  v0.1.0-light
+```
