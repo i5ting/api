@@ -68,7 +68,7 @@ function get_req_body_keys(req){
 }
 
 /**
- * Initialize a new `TestAgent`.
+ * if element in array
  *
  * @param {Array} arr
  * @param {string} str
