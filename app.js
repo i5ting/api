@@ -5,10 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var multer  = require('multer')
 
 var app = express();
-
-var multer  = require('multer')
 
 // for raw data
 app.use(function(req, res, next){
@@ -45,11 +44,9 @@ var token_post_request = data.token_post_request
 app.use(mock_api(token_get_request));
 app.use(mock_api(token_post_request));
 	 
-
 app.get('/',function(req,res){
-    res.send('hello,Api Sever!');
+  res.send('hello,Api Sever!');
 });
-
 
 app.listen(config.server.port);
 

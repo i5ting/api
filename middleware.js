@@ -2,7 +2,6 @@ var config = require('./config');
 var data = require('./data');
 var req_util = require('./src/req_util');
 
- 
 /**
  * 处理http verb为type1的请求
  *
@@ -94,6 +93,14 @@ function mount_a_req(obj, req, res, next){
 		return  mount_a_req_with_type2(obj, req, res, next);
 	}else{
 		console.log('in middleware.js,the http verb is not correct'+ verb);
+		res.json({
+			data : { 
+			},
+			status : {
+				code:-1,
+				msg : 'in middleware.js,the http verb is not correct'+ verb
+			}
+		})
 	}
 }
 
