@@ -7,7 +7,43 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer  = require('multer')
 
+// mongoose config
+var mongoose = require('mongoose')  
+  , connectionString = 'mongodb://localhost:27017/db_api'
+  , options = {};
+	
+options = {  
+  server: {
+    auto_reconnect: true,
+    poolSize: 10
+  }
+};
+	
+mongoose.connect(connectionString, options, function(err, res) {  
+  if(err) {
+    console.log('[mongoose log] Error connecting to: ' + connectionString + '. ' + err);
+  } else {
+    console.log('[mongoose log] Successfully connected to: ' + connectionString);
+  }
+});
+
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongoose connection error:'));
+db.once('open', function callback () {
+  // yay!
+	console.log('mongoose open success');
+});
+
+
 var app = express();
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = mongoose;
+		req.model = require('./src/model');
+    next();
+});
 
 // for raw data
 app.use(function(req, res, next){
