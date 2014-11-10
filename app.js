@@ -41,7 +41,7 @@ var app = express();
 // Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = mongoose;
-		req.model = require('./src/model');
+		req.model = require('./src/request_model');
     next();
 });
 

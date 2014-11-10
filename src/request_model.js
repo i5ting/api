@@ -24,4 +24,4 @@ var requestSchema = Schema({
 
 mongoose.model('RequestModel', requestSchema)
 
-exports.RequestModel = mongoose.model('RequestModel');
+module.exports = mongoose.model('RequestModel');
