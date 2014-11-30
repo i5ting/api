@@ -19,7 +19,9 @@ var requestSchema = Schema({
 	url: String,
 	host: String,
 	detail: String,
-	desc:String
+	desc:String,
+	create_time: {type: Date, default: Date.now},
+	update_time: {type: Date, default: Date.now}
 });
 
 mongoose.model('RequestModel', requestSchema)

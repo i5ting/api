@@ -31,33 +31,31 @@ db.once('open', function callback () {
 });
 
 var RequestModel = require('../src/request_model');
+var Request = require('../src/request');
+
+var param = {
+  rname: 'tokenrequest',
+	verb: 'get',
+	url: '/token',
+	host: '127.0.0.1',
+	detail: 'a long long data',
+	desc: '这是一个测试用的校验token的接口'
+}
 
 describe('RequestModel', function(){
 	before(function() {
     // runs before all tests in this block
 
 		
-
-		// create a user a new user
-		var testUser = new RequestModel({
-		    username: 'sang_test1',
-		    password: 'Password123'
-		});
-		
-		testUser.save(function(err,user) {
-		    if (err) throw err;
-				console.log('add mock data ok');
-		});
-		
   })
   after(function(){
     // runs after all tests in this block
 		
-		RequestModel.remove({}, function (err) {
-		  if (err) return handleError(err);
-		  // removed!
-			console.log('remove all data');
-		});
+		// RequestModel.remove({}, function (err) {
+// 		  if (err) return handleError(err);
+// 		  // removed!
+// 			console.log('remove all data');
+// 		});
 		
   })
   beforeEach(function(){
@@ -68,24 +66,19 @@ describe('RequestModel', function(){
   })
 	
   describe('#save()', function(){
-    it('should return sang_test2 when user save', function(done){
-			done();
-
-  			// // create a user a new user
-		//   			var testUser = new RequestModel({
-		//   			    username: 'sang_test2',
-		//   			    password: 'Password123'
-		//   			});
-		//
-		//   			// // save user to database
-		//   			testUser.save(function(err,user) {
-		//   			    if (err) throw err;
-		//
-		//   					assert.equal(user.username, 'sang_test2');
-		// 				done()
-		//   			});
-
-
+    it('should return sang_test2 when user save', function(done){		
+			// create a user a new user
+			var testRequest = new RequestModel(param);
+		
+			testRequest.save(function(err,user) {
+			    if (err) throw err;
+					console.log('add mock data ok');
+					
+					assert.equal(user.rname,'tokenrequest');
+					done();
+			});
+			
+			
     })
   })
 
